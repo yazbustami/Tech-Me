@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "error",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,13 +15,23 @@
   "keywords": [
     "[]"
   ],
-  "author": "",
+  "author": "Yasmin Bustami",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yazbustami/TechAndMe/issues"
   },
   "homepage": "https://github.com/yazbustami/TechAndMe#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "bcrypt": "^5.0.0",
+    "bootstrap": "^5.2.2",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "moment": "^2.29.4",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
   }
 }
