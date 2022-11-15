@@ -1,0 +1,23 @@
+{
+  "name": "techandme",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "server.js",
+  "scripts": {
+    "test": "error",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yazbustami/TechAndMe.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yazbustami/TechAndMe/issues"
+  },
+  "homepage": "https://github.com/yazbustami/TechAndMe#readme"
+}
