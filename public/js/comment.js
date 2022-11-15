@@ -1,22 +1,25 @@
-const addCommentBtn = $('addComment-btn');
-function addComment(event) {
+const commentFormHandler = async function(event) {
     event.preventDefault();
-    const commentStuff = $('#comment-Stuff');
-    const addComment = {
-        body: commentStuff.val()
-    };
-        fetch('/api/comments', {
-            method: 'POST',
-            body: JSON.stringify(addComment),
-            headers: { 'Content-Type': 'application/json' }})
-            .then(response => response.json())
-            .then(response => {
-                if (!response.ok) {
-                    document.location.replace('/dashboard');
-                } else {
-                    alert('Error');
-                }
-            })
-};
-
-addCommentBtn.on('click', addComment);
+  
+    const postId = document.querySelector('input[name="post-id"]').value;
+    const body = document.querySelector('textarea[name="comment-body"]').value;
+  
+    if (body) {
+      await fetch('/api/comments', {
+        method: 'POST',
+        body: JSON.stringify({
+          postId,
+          body
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      document.location.reload();
+    }
+  };
+  
+  document
+    .querySelector('#new-comment-form')
+    .addEventListener('submit', commentFormHandler);

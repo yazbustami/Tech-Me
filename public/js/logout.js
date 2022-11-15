@@ -12,4 +12,4 @@ const loggingOut = async (event) => {
         }
     };
 
-    document.querySelector('#loggingOut-link').addEventListener('click', loggingOut);
+    document.querySelector('#logout-link').addEventListener('click', loggingOut);

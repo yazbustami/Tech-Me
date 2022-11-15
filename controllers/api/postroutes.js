@@ -1,54 +1,52 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
-const withAuth = require ('../../utils/auth');
+const { Post } = require('../../models/');
+const withAuth = require('../../utils/auth');
 
- router.post('/', withAuth, async (req, res) => {
-    try {
-        const addNewPost = await Post.create({
-            ...req.body,
-            user_id: req.session.user_id,
-        });
-        res.status(200).json(addNewPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-        });
+router.post('/', withAuth, async (req, res) => {
+  const body = req.body;
 
-router.get('/:id', async (req, res) => {
-            try {
-                const postNewData = await Post.findByPk(req.params.id, {
-                    include: [
-                        User
-                    ],
-                });
-    const newPost = postNewData.get({ plain: true });
-
-    res.render('one-post', { newPost})
-            }
-            catch (err) {
-                res.status(500).json(err);
-            }
-        });
-
-
-router.delete('/:id', withAuth, async (req, res) => {
-    try {
-        const postNewData = await Project.destroy({
-            where: {
-                post_id: req.params.id,
-                user_id: req.session.user_id,
-            },
-        });
-
-        if (!postNewData) {
-            res.status(404).json({ message: 'NOT FOUND' });
-            return;
-        }
-        res.status(200).json(postNewData);
-    }
-    catch (err) {
-        res.status(500).json(err);
-    }
+  try {
+    const newPost = await Post.create({ ...body, userId: req.session.userId });
+    res.json(newPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-        module.exports = router;
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const [affectedRows] = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const [affectedRows] = Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
