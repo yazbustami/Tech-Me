@@ -13,10 +13,10 @@ const loggingInFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
-        if (response.ok) {
+        if (answer.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            alert(answer.statusText);
         }
         }
     };
