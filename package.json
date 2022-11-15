@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/yazbustami/TechAndMe/issues"
   },
-  "homepage": "https://github.com/yazbustami/TechAndMe#readme"
+  "homepage": "https://github.com/yazbustami/TechAndMe#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
