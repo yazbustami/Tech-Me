@@ -15,7 +15,7 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
 
 Screenshot
-Heroku Link: https://tech-and-me.herokuapp.com
+Heroku Link: https://nameless-wildwood-18713.herokuapp.com/login
 
 GH Link:https://github.com/yazbustami/TechAndMe
 
